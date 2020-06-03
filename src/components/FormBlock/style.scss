@@ -1,0 +1,31 @@
+$border: #000;
+$yellow: #fdd639;
+
+.form {
+  display: flex;
+  flex-direction: column;
+
+  .textarea {
+    margin-bottom: 23px;
+    padding: 10px;
+    border: 1px solid $border;
+    border-radius: 1px;
+    resize: none;
+  }
+
+  .btn {
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 21px;
+    background: $yellow;
+    border-radius: 23px;
+    border: none;
+    padding: 12px 0;
+    cursor: pointer;
+    width: 280px;
+    margin: 0 auto;
+    outline: none;
+  }
+}

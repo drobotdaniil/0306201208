@@ -1,0 +1,1 @@
+export const CREATE_FEEDBACK = 'POST/CREATE_FEEDBACK';

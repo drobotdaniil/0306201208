@@ -1,0 +1,64 @@
+$feedbg: #f2fbff;
+$border: #c4cbcf;
+$silver: #808080;
+
+.item {
+  display: flex;
+  flex-direction: column;
+
+  &__top {
+    display: flex;
+    align-items: center;
+
+    .participant {
+      margin: 0 15px 0 0;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 19px;
+    }
+
+    .date {
+      color: $silver;
+      font-size: 11px;
+    }
+  }
+
+  &__content {
+    background: $feedbg;
+    border: 1px solid $border;
+    box-shadow: 0px 4px 10px rgba(128, 128, 128, 0.1);
+    padding: 15px 20px;
+    margin: 10px 0 16px 0;
+    position: relative;
+
+    .triangle {
+      &:before {
+        transform: rotate(45deg);
+        width: 14px;
+        left: -12px;
+      }
+
+      &:after {
+        transform: rotate(90deg);
+        width: 11px;
+        left: -15px;
+      }
+
+      &:after,
+      &:before {
+        position: absolute;
+        top: -6px;
+        height: 1px;
+        content: '';
+        background: $border;
+      }
+
+      content: '';
+      top: -10px;
+      position: absolute;
+      border: 10px solid transparent;
+      border-bottom: 10px solid $feedbg;
+      border-left: 10px solid $feedbg;
+    }
+  }
+}
