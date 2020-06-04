@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { createFeedback, showAlert, hideAlert } from '../../redux/actions';
+import {
+  createFeedback,
+  showAlert,
+  hideAlert,
+  incrementCounter,
+} from '../../redux/actions';
 import './style.scss';
 import { Alert } from '../Alert/Alert';
 
@@ -24,6 +29,8 @@ const FormBlock = (props) => {
       }),
       id: Date.now().toString(),
     };
+
+    props.incrementCounter();
     props.createFeedback(newFeedback);
     setFeedback('');
   };
@@ -54,6 +61,7 @@ const FormBlock = (props) => {
 
 const mapDispatchToProps = {
   createFeedback,
+  incrementCounter,
   showAlert,
   hideAlert,
 };

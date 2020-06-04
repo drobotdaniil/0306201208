@@ -1,4 +1,4 @@
-import { CREATE_FEEDBACK } from './types';
+import { CREATE_FEEDBACK, INCREMENT_COUNTER } from './types';
 
 const initialState = {
   feedbacks: [
@@ -23,12 +23,15 @@ const initialState = {
       date: '13 октября 2011 г.',
     },
   ],
+  feedbackCounter: 3,
 };
 
 export const feedbackReducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_FEEDBACK:
       return { ...state, feedbacks: [...state.feedbacks, action.payload] };
+    case INCREMENT_COUNTER:
+      return { ...state, feedbackCounter: state.feedbackCounter + 1 };
     default:
       return state;
   }

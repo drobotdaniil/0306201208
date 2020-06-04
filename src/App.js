@@ -2,7 +2,8 @@ import React from 'react';
 import FeedbackContainer from './components/FeedbackContainer';
 import FormBlock from './components/FormBlock/FormBlock';
 import './styles/App.scss';
-function App() {
+import { connect } from 'react-redux';
+function App(props) {
   return (
     <div className='wrapper'>
       <div className='main'>
@@ -41,9 +42,9 @@ function App() {
                   <span className='count'>1</span>
                 </div>
               </div>
-              <div className="result">
-                <h4 className="result-title">Всего</h4>
-                <span className="result-counter">15</span>
+              <div className='result'>
+                <h4 className='result-title'>Всего</h4>
+                <span className='result-counter'>15</span>
               </div>
             </div>
           </div>
@@ -61,7 +62,7 @@ function App() {
                 <img src='/images/like.png' alt='like' /> 131
               </div>
               <div className='counters__item'>
-                <img src='/images/comment.png' alt='comment' /> 13
+                <img src='/images/comment.png' alt='comment' /> {props.counter}
               </div>
             </div>
           </div>
@@ -77,4 +78,10 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  counter: state.feedbacks.feedbackCounter,
+});
+
+export default connect(mapStateToProps, null)(App);
+
+// export default App;
