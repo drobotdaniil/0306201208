@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { createFeedback } from '../../redux/actions';
+import { createFeedback, showAlert, hideAlert } from '../../redux/actions';
 import './style.scss';
+import { Alert } from '../Alert/Alert';
 
 const FormBlock = (props) => {
   const [feedback, setFeedback] = useState('');
@@ -9,7 +10,9 @@ const FormBlock = (props) => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    if (!feedback.trim()) return;
+    if (!feedback.trim()) {
+      return props.showAlert('Длина сообщения должна быть более 1 символа.');
+    }
 
     const newFeedback = {
       name: 'Anonymus',
@@ -43,6 +46,7 @@ const FormBlock = (props) => {
         value={feedback}
         onChange={changeInputHandler}
       />
+      {props.alert && <Alert text={props.alert} />}
       <button className='btn'>Написать консультанту</button>
     </form>
   );
@@ -50,6 +54,12 @@ const FormBlock = (props) => {
 
 const mapDispatchToProps = {
   createFeedback,
+  showAlert,
+  hideAlert,
 };
 
-export default connect(null, mapDispatchToProps)(FormBlock);
+const mapStateToProps = (state) => ({
+  alert: state.app.alert,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(FormBlock);

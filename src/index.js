@@ -4,12 +4,15 @@ import './styles/index.css';
 import './styles/normalize.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { rootReducer } from './redux/rootReducer';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import { forbiddentWordsMiddleWare } from './middlewares/forbiddenWords.middleware';
 
 const store = createStore(
-  rootReducer
+  rootReducer,
+  applyMiddleware(thunk, forbiddentWordsMiddleWare)
 );
 
 const app = (
